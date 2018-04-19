@@ -1,0 +1,63 @@
+{% extends 'bootstrap/base.html' %}
+{% block head %}
+    {{ super() }}
+{#    {% include 'includes/_head.html' %}#}
+{% endblock %}
+    {% block title %}
+{#            {{ super() }}#}
+        {{ title|default }}--一个非程序员的自白
+    {% endblock %}
+{#{% block body %}#}
+{#    {{ super() }}#}
+{% block navbar %}
+    {{ super() }}
+{% include 'includes/_navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+{#            <h1>欢迎光临我的博客</h1>#}
+        <p>{{ title }}</p>
+{#        <p><a class="btn btn-default" href="{{ url_for("main.about") }}" role="button">关于我</a></p>#}
+        </div>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-9">
+                {% block main_body %}
+                    {% endblock %}
+            </div>
+            <div class="col-md-3 panel-info">
+                {% block sidebar %}
+                    {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+<footer class=" navbar navbar-default navbar-fixed-bottom text-center">2018 &copy;Alan LCT</footer>
+{%  endblock %}
+{#{% endblock %}#}
+
+
+
+
+{# 包含子文件 #}
+{#{% block head %}#}
+{#    {{ super() }}#}
+{#    {% include "includes/_head.html" %}#}
+{#{% endblock %}#}
+{#{% block charset %}#}
+{#    <meta charset="utf-8" />#}
+{#{% endblock %}#}
+{#{% block navbar %}#}
+{#    {{ nav.top.render() }}#}
+{#{% endblock navbar %}#}
+{#{% block header %}{% endblock %}#}
+{#{% block content %}#}
+{#{% endblock %}#}
+{#<div>{% block content %}{% endblock %}</div>#}
+{#{% block footer %}#}
+{#<footer>#}
+{#    &copy;2017</footer>#}
+{#{% endblock %}#}

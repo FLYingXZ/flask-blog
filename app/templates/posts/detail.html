@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block main_body %}
+        {{ title }} <a href="{{ url_for('main.edit',id=post.id) }}">编辑</a>
+        <br>
+        <span>作者:{{ post.author.nickname }}</span><span>发布日期:{{ post.created }}</span>
+        <hr>
+        <div>
+            {{ post.body_html|safe }}
+        </div>
+        <h3>评论</h3>
+        <div>
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-info" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span class="sr-only">Error:</span>
+                  {{ message }}
+                </div>
+            {% endfor %}
+            {{ wtf.quick_form(form) }}
+        </div>
+        {% for comment in comments|sort(attribute='created',reverse=True) %}
+            <div class="media">
+                <div class="media-left"><img src="{{ "test"| gravatar}}" alt=""></div>
+                <div class="media-heading">{{ comment.created }}</div>
+                <div class="media-body">
+                    {{ comment.body }}
+                </div>
+            </div>
+
+        {% endfor %}
+{% endblock %}

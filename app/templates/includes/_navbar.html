@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button aria-expanded="false" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fuckyou">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">一个非程序员的自白</span>
+        </div>
+        <div class="navbar-collapse collapse" id="fuckyou">
+            <ul class="nav navbar-nav">
+                <li {% if url_for('main.index') is current_link %} class="active"{% endif %}>
+                    <a href="{{ url_for('main.index') }}">首页</a>
+                </li>
+                <li {% if url_for('main.services') is current_link %} class="active"{% endif %}>
+                    <a href="{{ url_for('main.services') }}">服务</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                    <li><a href="#">{{ current_user.name }}</a></li>
+                    <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">注册</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+
+</nav>

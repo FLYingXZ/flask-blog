@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{%  import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+    {{ super() }}
+    <div class="container">
+
+        <form method="post">
+{#              {{ wtf.quick_form(form) }}#}
+{#                {{ form.hidden_tag() }}#}
+{#            {{ form.csrf_token }}#}
+                {{ form.csrf_token }}
+{#                {{ form.hidden_tag() }}#}
+                {{ wtf.form_field(form.user,disabled="disabled",value=user) }}
+{#                {{ wtf.form_field(form.old_password) }}#}
+                {{ wtf.form_field(form.nickname) }}
+{#                {% if message in get_flashed_meassges %}#}
+{#                    {{ message }}#}
+{#                {% endif %}#}
+                {{ wtf.form_field(form.password) }}
+                {% for message in get_flashed_messages() %}
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>
+                      {{ message }}
+                    </div>
+                {% endfor %}
+                {{ wtf.form_field(form.password2)}}
+                {{ wtf.form_field(form.submit) }}
+        </form>
+{#        {{  jinja2_encode("曹尼玛") }}#}
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+    {% block main_body %}
+
+{#            {{ title }}#}
+{#            <br>#}
+
+            <a  class="btn btn-primary" href="{{ url_for('main.edit') }}">新增文章</a>
+
+                {% for post in posts %}
+                <h2>
+                <a href="{{ url_for('main.post',id=post.id) }}">{{ post.title }}</a>
+                </h2>
+                <div>{{ post.body_html |safe}}</div>
+                {% endfor %}
+
+
+{% endblock %}
+
+
+{# 引用宏函数 #}
+{#{% import 'includes/_macro.html' as input_template %}#}
+{#% include "includes/_head.html" %}#}
+{#{% block title %}#}
+{#    {{ super() }}#}
+{##}
+{#    {% if title %}{{ title }}-web{% else %}web{% endif %}#}
+{#{% endblock %}#}
+{##}
