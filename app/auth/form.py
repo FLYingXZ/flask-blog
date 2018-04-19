@@ -35,6 +35,4 @@ class PasswdChangeFrom(Form):
                                                  EqualTo("password2", message=u"两次密码不一致")])
     password2 = PasswordField(u"重复密码", validators=[DataRequired()])
     submit = SubmitField(u"提交")
-    # def __init__(self,*args,**kwargs):
-    #     super(PasswdChangeFrom,self).__init__(*args,**kwargs)
-    #     self.old_password=[user.password for user in User.query.filter_by(name=current_user.name).first()]
+

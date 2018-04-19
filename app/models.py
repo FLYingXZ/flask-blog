@@ -71,10 +71,6 @@ class Post(db.Model):
                         'h1', 'h2', 'h3', 'p']
         target.body_html = bleach.linkify(
             bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
-    # def on_body_changed(target, value, oldvalue, initiator):
-    #     if value is None or (value is ""):
-    #         target.body_html = ""
-    #     target.body_html = markdown(value)
 
 
 db.event.listen(Post.body, "set", Post.on_body_changed)
